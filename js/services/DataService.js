@@ -1,12 +1,14 @@
 const URL = 'http://localhost:4000/api/products';
 export default {
     getProducts: async () => {    
-        debugger;   
-        const Request = getRequest(URL);
+         
+        // const Request = getRequest(URL);
       
-        const response = await fetch(Request);
-        const data = await response.json()
-        console.log(data)
+        // const response = await fetch(Request);
+
+        // const data = await response.json()
+        // console.log(data)
+        const data = getProducts();
         return data;
         }
 }
