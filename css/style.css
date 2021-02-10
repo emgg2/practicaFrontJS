@@ -42,3 +42,7 @@ img {
   width: 120px;
   height: 140px;
 }
+
+.hidden {
+  visibility: hidden;
+}
