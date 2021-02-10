@@ -17,7 +17,7 @@ a {
   margin-top: 5%;
 }
 
-.article {
+.product {
   border: 1px solid lightgray;
   margin: 5px;
   padding: 10px;
@@ -45,4 +45,9 @@ img {
 
 .hidden {
   visibility: hidden;
+}
+
+.products-list {
+  display:flex;
+  flex-wrap: wrap;
 }
