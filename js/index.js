@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', async (event) =>{
     const productsList = document.querySelector('.products-list');
 
     for(const product of products) {
-        debugger;
+        
         const productElement = document.createElement('article');
         const productHTML = productView(product);
         productElement.innerHTML = productHTML;
