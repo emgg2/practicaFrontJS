@@ -5,7 +5,7 @@ import {productView} from './view.js';
 window.addEventListener('DOMContentLoaded', async (event) =>{
     
     setTimeout(() => {
-        const loader = document.querySelector('.lds-ripple');
+        const loader = document.querySelector('.content-loader');
         loader.classList.add('hidden');
     },2000)
     
