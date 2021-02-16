@@ -1,7 +1,7 @@
 'use strict';
 
 import BaseController from "./BaseController.js";
-import {productView} from '../view.js'
+import {productView} from '../views/productView.js'
 import DataService from "../services/DataService.js";
 import LoaderController from './LoaderController.js';
 
@@ -21,8 +21,8 @@ export default class ProductListController extends BaseController {
         try { 
             const products = await DataService.getProducts();
             this.render(products);
-        } catch (error){
-            console.error(error);
+        } catch (error){              
+            this.publish(this.events.ERROR, error);
         }finally {
             this.publish(this.events.FINISH_LOADING, {});
         }

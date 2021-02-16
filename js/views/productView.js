@@ -19,4 +19,5 @@ export const productView = (product) => {
             <p class="${classValue}">${sale}</p>
         </div>
     </div>`;
-}
+};
+
