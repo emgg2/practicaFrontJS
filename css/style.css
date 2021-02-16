@@ -1,3 +1,5 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+
 body {
  margin:0px;
  padding:0px;
@@ -17,12 +19,8 @@ a {
   margin-top: 5%;
 }
 
-.product {
-  border: 1px solid lightgray;
-  margin: 5px;
-  padding: 10px;
-  border-radius:5px
-
+product {
+  padding: 0 1rem 1rem 1rem;
 }
 
 .tag{
@@ -41,6 +39,9 @@ a {
 img {
   width: 120px;
   height: 140px;
+  min-width: 120px;
+  min-height: 140px;
+  background-color: lightgrey;
 }
 
 .hidden {

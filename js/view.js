@@ -10,11 +10,13 @@ export const productView = (product) => {
          classValue = "lookingFor";
     }
     return `
-    <div class = "product">
+    <div class = "box">
         <img src="${product.picture}" alt="${product.name}">
-        <p class="tag">${product.tags.join(" ")}</p>
-        <p>${product.name}</p>
-        <p><b>${product.price}€</b></p>     
-        <p class="${classValue}">${sale}</p>
+        <div>
+            <p class="tag">${product.tags.join(" ")}</p>
+            <p>${product.name}</p>
+            <p><b>${product.price}€</b></p>     
+            <p class="${classValue}">${sale}</p>
+        </div>
     </div>`;
 }

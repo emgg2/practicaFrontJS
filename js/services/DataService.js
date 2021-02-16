@@ -1,4 +1,4 @@
-const URL = 'http://localhost:3000/api/products';
+const URL = 'http://localhost:5000/api/products';
 export default {
     getProducts: async () => {    
          const response = await fetch(URL);

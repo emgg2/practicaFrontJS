@@ -9,7 +9,6 @@ window.addEventListener('DOMContentLoaded', async (event) =>{
     const loader = document.querySelector(".content-loader");
     const loaderController = new LoaderController(loader);
     
-
     const productsList = document.querySelector('.products-list');
     const productsController = new ProductListController(productsList);
     productsController.loader = loaderController;
