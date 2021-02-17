@@ -1,7 +1,6 @@
 {"products":[
  {"name": "Rain Boots","sale": false,"price": 25.55,"picture": "./images/rain-boots.jpeg","tags": [ "lifestyle"]},
- {"name": "Xiaomi Redmi","sale": false,"price": 130.00,"picture": "./images/xiaomi.jpeg","tags": [ "lifestyle", "mobile"]},
- {"name": "Rain Boots","sale": false,"price": 25.55,"picture": "./images/rain-boots.jpeg","tags": [ "lifestyle"]},
+ {"name": "Xiaomi Redmi","sale": false,"price": 130.00,"picture": "./images/xiaomi.jpeg","tags": [ "lifestyle", "mobile"]}, 
  {"name": "Panama Boots","sale": false,"price": 105.00,"picture": "./images/panama_boots.jpeg","tags": [ "lifestyle"]},
  {"name": "Bicicleta","sale": true,"price": 230.15,"picture": "./images/bicicleta.jpeg","tags": [ "lifestyle", "motor"]}],
 "users":[{"id":1,"username":"luke@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"}
