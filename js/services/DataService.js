@@ -42,11 +42,15 @@ export default {
     },
 
     getToken: async function() {
-        localStorage.getItem(TOKEN_KEY);
-
+        return localStorage.getItem(TOKEN_KEY);
     },
 
     saveToken: async function(token) {
         localStorage.setItem(TOKEN_KEY, token);
+    },
+
+    isUserLogged: async function(){
+        const token = await this.getToken();
+        return token !== null;
     }
 }

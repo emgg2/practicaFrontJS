@@ -10,15 +10,24 @@
 </head>
 <body>
   <div class="content-loader"><div class="lds-ripple"><div></div><div></div></div></div>
-  <div class="global-errors"></div>
-    <div class="content">
-        <main class="products-list">
-          <article> </article>
-        </main>
 
-          <script type="module" src="./js/index.js"></script>
-       
+  <div class="global-errors hidden"></div>
+
+  <div class="content">
+      <main class="products-list">
+        <article> </article>
+      </main>            
   </div>
+
+  <div class="new-product">
+
+    <a href="/new-product.html" class="button is-primary is-hidden new-product-button">New Product</a>
+    <span class="is-hidden login-register-buttons">
+        <a href="/login.html" class="button is-primary">Login</a> or
+        <a href="/register.html" class="button is-primary">Register</a>
+    </span>
   </div>
+
+  <script type="module" src="./js/index.js"></script>
 </body>
 </html>

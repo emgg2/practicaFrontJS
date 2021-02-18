@@ -2,8 +2,7 @@
 import LoaderController from './controllers/LoaderController.js';
 import ProductListController from './controllers/ProductListController.js';
 import ErrorController from './controllers/ErrorController.js';
-import dataService from './services/DataService.js';
-import {productView} from '../js/views/productView.js';
+import NewProductOrLoginController from './controllers/NewProductOrLoginController.js';
 
 window.addEventListener('DOMContentLoaded', async (event) =>{
     
@@ -18,6 +17,7 @@ window.addEventListener('DOMContentLoaded', async (event) =>{
     const errorsElement = document.querySelector('.global-errors');
     const errorsController = new ErrorController(errorsElement);
     
-
+    const newProductButtons = document.querySelector('.new-product');
+    new NewProductOrLoginController(newProductButtons);
 
 })

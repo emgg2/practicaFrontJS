@@ -52,3 +52,10 @@ img {
   display:flex;
   flex-wrap: wrap;
 }
+
+/* new product or login */
+.new-product {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
