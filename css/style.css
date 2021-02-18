@@ -59,3 +59,8 @@ img {
   right: 20px;
   bottom: 20px;
 }
+
+.product-text {
+  font-weight: bold;
+  text-align: right;
+}

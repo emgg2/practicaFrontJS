@@ -17,8 +17,72 @@
             <div class="column is-two-thirds">
                 <h1 class="title">New Product</h1>
                 <form>
-                    <textarea name="message" class="textarea" placeholder="Write your tweet here..." required></textarea>
-                    <input type="file" name="file" accept="image/*">
+                    <table class="table">
+                        <tr>
+                            <td class="product-text">Description</td>
+                            <td><input class="input" type="text" placeholder="Text Description"></td>
+                        </tr>
+                        <tr>
+                            <td class="product-text">Price</td>
+                            <td><input class="input" type="text" placeholder="Text Price"></td>
+                        </tr>
+                        <tr>
+                            <td class="product-text">Status</td>
+                            <td>
+                                <div class="select">
+                                    <select>
+                                      <option value="true">En venta</option>
+                                      <option value="false">Se busca</option>
+                                    </select>
+                                  </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="product-text">Picture</td>
+                            <td>
+                                <div class="file has-name">
+                                    <label class="file-label">
+                                      <input class="file-input" type="file" name="resume">
+                                      <span class="file-cta">
+                                        <span class="file-icon">
+                                          <i class="fas fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                          Choose a file…
+                                        </span>
+                                      </span>
+                                      <span class="file-name">
+                                        Screen Shot 2017-07-29 at 15.54.25.png
+                                      </span>
+                                    </label>
+                                  </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="product-text">Tags</td>
+                            <td>
+                                <div class="select is-multiple">
+                                    <select multiple size="8">
+                                      <option value="Argentina">Argentina</option>
+                                      <option value="Bolivia">Bolivia</option>
+                                      <option value="Brazil">Brazil</option>
+                                      <option value="Chile">Chile</option>
+                                      <option value="Colombia">Colombia</option>
+                                      <option value="Ecuador">Ecuador</option>
+                                      <option value="Guyana">Guyana</option>
+                                      <option value="Paraguay">Paraguay</option>
+                                      <option value="Peru">Peru</option>
+                                      <option value="Suriname">Suriname</option>
+                                      <option value="Uruguay">Uruguay</option>
+                                      <option value="Venezuela">Venezuela</option>
+                                    </select>
+                                  </div>
+                            </td>
+                        </tr>
+                        
+                      </table>
+                    
+                    
                     <button class="button is-primary is-pulled-right" disabled>Publish</button>
                 </form>
             </div>
