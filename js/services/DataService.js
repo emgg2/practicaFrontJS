@@ -34,5 +34,10 @@ export default {
     registerUser: async function(user) {
         const url = `${BASE_URL}/auth/register`
         return await this.post(url, user);
+    },
+    
+    login: async function(user) {
+        const url = `${BASE_URL}/auth/login`;
+        return await this.post(url, user);
     }
 }
