@@ -15,7 +15,6 @@ window.addEventListener('DOMContentLoaded', () => {
     const tagsController = new TagsController(tagsElement);
     tagsController.loadTags();
 
-
     const formElement = document.querySelector('form');
     new NewProductFormController(formElement, tagsElement);
 });

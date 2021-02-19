@@ -74,5 +74,23 @@ export default {
         const response = await fetch(`${BASE_URL}/api/tags`);
         const data = response.json();
         return data;
+    },
+
+    uploadImage: async function(image) {
+        const form = new FormData();
+        form.append('file', image);
+        const url = `${BASE_URL}/upload`;
+        const response = await this.post(url, form, false);
+        return response.path || null;
+    },
+
+    saveProduct: async function(product) {
+        const url = `${BASE_URL}/api/products`;
+        if (product.image) {
+            const imageURL = await this.uploadImage(product.image);
+            product.image = imageURL;
+        }
+        return await this.post(url, product);
+
     }
 }

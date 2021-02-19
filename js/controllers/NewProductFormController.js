@@ -28,24 +28,38 @@ export default class NewProductController extends BaseController {
     }
 
     attachEventListeners() {
-        // a medida que el usuario escribe, comprobamos si el formulario es válido para habiltiar o no el botón de enviar
-        // const textarea = this.element.querySelector('textarea');
-        // textarea.addEventListener('keyup', () => {
-        //     const button = this.element.querySelector('button');
-        //     if (this.element.checkValidity()) {
-        //         button.removeAttribute('disabled');
-        //     } else {
-        //         button.setAttribute('disabled', true);
-        //     }
-        // });
+       // a medida que el usuario escribe, comprobamos si el formulario es válido para habiltiar o no el botón de enviar
+       this.element.querySelectorAll("input").forEach((input) => {
+        const button = this.element.querySelector("button");
+        input.addEventListener("keyup", (event) => {
+          // si el input es OK lo marco en verde, si no, en rojo
+          if (input.validity.valid) {
+            input.classList.add("is-success");
+            input.classList.remove("is-danger");
+          } else {
+            input.classList.remove("is-success");
+            input.classList.add("is-danger");
+          }
+  
+          // valido si todo el formulario es OK para habilitar o deshabilitar el botón
+          if (this.element.checkValidity()) {
+            button.removeAttribute("disabled");
+            
+          } else {
+            button.setAttribute("disabled", true);
+          }
+        });
+      });
+        
 
         // check whem the form is sended
         this.element.addEventListener('submit', async event => {
             event.preventDefault();  
+            debugger;
             const product = {
-                description: this.element.elements.message.value,
+                description: this.element.elements.description.value,
                 price: this.element.elements.price.value,
-                image: this.element.elements.image.value,
+                image: this.element.elements.file.files[0],
                 status: this.element.elements.status.value,
                 tags: []
             }
