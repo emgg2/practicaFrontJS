@@ -6,20 +6,35 @@ export default {
          const response = await fetch(`${BASE_URL}/api/products`);
          const data = response.json();
         return data;
-        },
+    },
+    post: async function(url, postData, json=true) {
+        return await this.request('POST', url, postData, json);
+    },
 
-    post: async function(url, postData, withToken = false) {
+    delete: async function(url) {
+        return await this.request('DELETE', url, {});
+    },
+
+    put: async function(url, putData, json=true) {
+        return await this.request('PUT', url, putData, json);
+    },
+
+    request: async function(method, url, postData, json=true) {
         const config = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(postData)  // convierte el objeto de usuarios en un JSON
+            method: method,
+            headers: {},
+            body: null
         };
-        if(withToken) {
-            const token = await this.getToken();
-            if (token) {
-                config.headers['Authorization'] = `Bearer ${token}`;
-            }
-        }        
+        if (json) {
+            config.headers['Content-Type'] = 'application/json';
+            config.body = JSON.stringify(postData);  // convierte el objeto de usuarios en un JSON
+        } else {
+            config.body = postData;
+        }
+        const token = await this.getToken();
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
         const response = await fetch(url, config);
         const data = await response.json();  // respuesta del servidor sea OK o sea ERROR.
         if (response.ok) {
@@ -29,7 +44,8 @@ export default {
             // TODO: si la respuesta es un 401 no autorizado, debemos borrar el token (si es que lo tenemos);
             throw new Error(data.message || JSON.stringify(data));
         }
-    },   
+    },
+    
 
     registerUser: async function(user) {
         const url = `${BASE_URL}/auth/register`
@@ -52,5 +68,11 @@ export default {
     isUserLogged: async function(){
         const token = await this.getToken();
         return token !== null;
+    },
+
+    getTags: async function(){
+        const response = await fetch(`${BASE_URL}/api/tags`);
+        const data = response.json();
+        return data;
     }
 }

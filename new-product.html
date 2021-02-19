@@ -20,17 +20,17 @@
                     <table class="table">
                         <tr>
                             <td class="product-text">Description</td>
-                            <td><input class="input" type="text" placeholder="Text Description"></td>
+                            <td><input name="description" class="input" type="text" placeholder="Text Description" required></td>
                         </tr>
                         <tr>
                             <td class="product-text">Price</td>
-                            <td><input class="input" type="text" placeholder="Text Price"></td>
+                            <td><input name="price" class="input" type="text" placeholder="Text Price" required></td>
                         </tr>
                         <tr>
                             <td class="product-text">Status</td>
                             <td>
                                 <div class="select">
-                                    <select>
+                                    <select name="status" required>
                                       <option value="true">En venta</option>
                                       <option value="false">Se busca</option>
                                     </select>
@@ -42,7 +42,7 @@
                             <td>
                                 <div class="file has-name">
                                     <label class="file-label">
-                                      <input class="file-input" type="file" name="resume">
+                                      <input class="file-input" type="file" name="resume" required> 
                                       <span class="file-cta">
                                         <span class="file-icon">
                                           <i class="fas fa-upload"></i>
@@ -61,20 +61,8 @@
                         <tr>
                             <td class="product-text">Tags</td>
                             <td>
-                                <div class="select is-multiple">
-                                    <select multiple size="8">
-                                      <option value="Argentina">Argentina</option>
-                                      <option value="Bolivia">Bolivia</option>
-                                      <option value="Brazil">Brazil</option>
-                                      <option value="Chile">Chile</option>
-                                      <option value="Colombia">Colombia</option>
-                                      <option value="Ecuador">Ecuador</option>
-                                      <option value="Guyana">Guyana</option>
-                                      <option value="Paraguay">Paraguay</option>
-                                      <option value="Peru">Peru</option>
-                                      <option value="Suriname">Suriname</option>
-                                      <option value="Uruguay">Uruguay</option>
-                                      <option value="Venezuela">Venezuela</option>
+                                <div  class="select is-multiple">
+                                    <select multiple size="8" name="tags">                        
                                     </select>
                                   </div>
                             </td>
@@ -89,6 +77,6 @@
         </div>
     </div>
 
-    <script type="module" src="js/new-tweet.js"></script>
+    <script type="module" src="js/new-product.js"></script>
 </body>
 </html>
