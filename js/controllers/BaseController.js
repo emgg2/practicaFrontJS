@@ -10,7 +10,8 @@ export default class BaseController {
             START_LOADING: 'startLoading',
             FINISH_LOADING: 'finishLoading',
             ERROR: 'error',
-            CLICK: 'click'
+            CLICK: 'click',
+            PRODUCT_DELETED: 'productDeleted'
         }
     }
 

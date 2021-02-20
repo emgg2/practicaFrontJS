@@ -1,22 +1,20 @@
 export const productView = (product) => {
+
     let sale = "";
     let classValue = "";
-    if(product.sale)
-    {
-         sale = "En venta";
-         classValue = "sale";
-    }else {
-         sale = "Se busca";
-         classValue = "lookingFor";
+    let deleteButtonHTML = "";
+    if( product.canBeDeleted) {
+        deleteButtonHTML = `<div class ="deletedButton" ><i class="fa fa-trash fa-lg" aria-hidden="true"></i></div>`
     }
     return `
     <div class = "box">
+        ${deleteButtonHTML}
         <img src="${product.picture}" alt="${product.name}">
         <div>
-            <p class="tag">${product.tags.join(" ")}</p>
+            <p class="tag">${product.tags}</p>
             <p>${product.name}</p>
             <p><b>${product.price}€</b></p>     
-            <p class="${classValue}">${sale}</p>
+            <p class="${product.sale}">${sale}</p>
         </div>
     </div>`;
 };

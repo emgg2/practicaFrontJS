@@ -2,10 +2,36 @@ const BASE_URL = 'http://127.0.0.1:8000';
 const TOKEN_KEY = 'token';
 
 export default {
-    getProducts: async function() {   
-         const response = await fetch(`${BASE_URL}/api/products`);
-         const data = response.json();
-        return data;
+    getProducts: async function(query = null) {   
+        const currentUser = await this.getUser();
+        const url = `${BASE_URL}/api/products?_expand=user&_sort=id&_order=desc`;
+        if(query) {
+            url += `&q=${query}`
+        }
+
+        const response = await fetch(url);
+
+        if(response.ok) {
+            const data = await response.json();
+            return data.map (product => {
+                const user = product.user || {};
+                
+
+                return {
+                    id: product.id,
+                    name: product.name.replace(/(<([^>]+)>)/gi, ""),
+                    price: product.price.replace(/(<([^>]+)>)/gi, ""),
+                    sale: product.sale ? 'En venta' : 'Se busca',
+                    picture: product.picture,
+                    tags: product.tags.join(' '),
+                    canBeDeleted: currentUser ? currentUser.userId === product.userId : false
+
+                }
+            });
+        } else
+        {
+            throw new Error (`HTTP Error: ${response.status}`);
+        }
     },
     post: async function(url, postData, json=true) {
         return await this.request('POST', url, postData, json);
@@ -91,6 +117,23 @@ export default {
             product.picture = imageURL;
         }
         return await this.post(url, product);
+    },
 
+    getUser: async function () {
+        try {
+
+            const token = await this.getToken();
+            const tokenParts = token.split(".");
+            if(tokenParts.length !== 3) {
+                return null;
+            }
+            const payload = tokenParts[1];
+            const jsonStr = atob(payload);
+            const { userId, username } = JSON.parse (jsonStr);
+            return { userId, username }
+
+        }catch (error) {
+            return null;
+        }
     }
 }
