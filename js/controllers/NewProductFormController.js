@@ -55,22 +55,27 @@ export default class NewProductController extends BaseController {
         // check whem the form is sended
         this.element.addEventListener('submit', async event => {
             event.preventDefault();  
-            debugger;
+         
             const product = {
-                description: this.element.elements.description.value,
+                name: this.element.elements.description.value,
                 price: this.element.elements.price.value,
-                image: this.element.elements.file.files[0],
-                status: this.element.elements.status.value,
+                picture: this.element.elements.picture.files[0],
+                sale: this.element.elements.status.value,
                 tags: []
             }
-            if (this.element.elements.tags.length > 0) {
-
-                product.tags = this.element.elements.tags;
+            
+            const options = this.element.elements.tags.options;
+            for (let i = 0; i < options.length ; i++) {
+                if (options[i].selected) 
+                {
+                    product.tags.push(options[i].value);
+                }
             }
+
             this.publish(this.events.START_LOADING);
             try {
                 await dataService.saveProduct(product);
-                window.location.href = '/?mensaje=tweetOK'
+                window.location.href = '/?mensaje=productOK'
             } catch (error) {
                 this.publish(this.events.ERROR, error)
             } finally {

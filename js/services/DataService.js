@@ -86,9 +86,9 @@ export default {
 
     saveProduct: async function(product) {
         const url = `${BASE_URL}/api/products`;
-        if (product.image) {
-            const imageURL = await this.uploadImage(product.image);
-            product.image = imageURL;
+        if (product.picture) {
+            const imageURL = await this.uploadImage(product.picture);
+            product.picture = imageURL;
         }
         return await this.post(url, product);
 
