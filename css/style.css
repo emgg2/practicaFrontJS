@@ -65,3 +65,14 @@ img {
   font-weight: bold;
   text-align: right;
 }
+
+.deleteButton {
+  display: block;
+  float: right;
+  padding-bottom: 10px;
+  color: lightgrey;
+}
+
+.deleteButton:hover {
+  color: black;
+}

@@ -4,7 +4,7 @@ export const productView = (product) => {
     let classValue = "";
     let deleteButtonHTML = "";
     if( product.canBeDeleted) {
-        deleteButtonHTML = `<div class ="deletedButton" ><i class="fa fa-trash fa-lg" aria-hidden="true"></i></div>`
+        deleteButtonHTML = `<div class ="deleteButtonContainer"><div class="deleteButton"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></div></div>`
     }
     return `
     <div class = "box">

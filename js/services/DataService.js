@@ -135,5 +135,12 @@ export default {
         }catch (error) {
             return null;
         }
+    }, 
+
+    deleteProduct: async function (product) {
+        debugger;
+        const url = `${BASE_URL}/api/products/${product.id}`;
+        return await this.delete(url);
+
     }
 }

@@ -21,10 +21,12 @@ export default class ProductListController extends BaseController {
         for(const product of products) {
             const productPost = document.createElement('product');
             productPost.innerHTML = productView(product);
-            const deleteButton = productPost.querySelector('button');
+
+            const deleteButton = productPost.querySelector('.deleteButton');        
             if(deleteButton) {
-                new DeleteButtonController(deleteButton, productPost);
+                new DeleteButtonController(deleteButton, product);
             }
+            
             this.element.appendChild(productPost);
 
         }
@@ -39,7 +41,7 @@ export default class ProductListController extends BaseController {
         this.publish(this.events.START_LOADING);
         try { 
             const products = await DataService.getProducts();
-            
+
             this.render(products);
         } catch (error){              
             this.publish(this.events.ERROR, error);
