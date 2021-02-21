@@ -17,11 +17,13 @@ export default {
                 const user = product.user || {};
                 
 
+
                 return {
                     id: product.id,
                     name: product.name.replace(/(<([^>]+)>)/gi, ""),
                     price: product.price.replace(/(<([^>]+)>)/gi, ""),
-                    sale: product.sale ? 'En venta' : 'Se busca',
+                    sale: product.sale === 'true' ? 'En venta' : 'Se busca',
+                    classSale: product.sale === 'true' ? 'sale' : 'lookingFor',
                     picture: product.picture,
                     tags: product.tags.join(' '),
                     canBeDeleted: currentUser ? currentUser.userId === product.userId : false

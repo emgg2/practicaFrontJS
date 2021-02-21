@@ -70,7 +70,7 @@ img {
   display: block;
   float: right;
   padding-bottom: 10px;
-  color: lightgrey;
+  color: grey;
 }
 
 .deleteButton:hover {
