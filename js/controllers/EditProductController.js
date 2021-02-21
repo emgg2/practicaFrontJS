@@ -1,47 +1,47 @@
 'use strict';
 
 import BaseController from "./BaseController.js";
-import {productView} from '../views/productView.js'
+import {editProductView} from '../views/editProductView.js'
 import DataService from "../services/DataService.js";
 import LoaderController from './LoaderController.js';
 import DeleteButtonController from './DeleteButtonControler.js';
 
 export default class ProductListController extends BaseController {
 
-    constructor(element) {
-        super(element);
+    constructor(element, productId) {
+        super(element);        
+        this.productId = productId;
         this.subscribe(this.events.PRODUCT_DELETED, ev => {
-            this.loadProducts();
+            window.location.href = "/login.html";
         });
     }
 
-
-    render (products) {
+    render (product) {
         this.element.innerHTML = '';
-        for(const product of products) {
-            const productPost = document.createElement('product');
-            productPost.innerHTML = productView(product);
+        
+        const productDetail = document.createElement('product');
+        productDetail.innerHTML = editProductView(product);
 
-            const deleteButton = productPost.querySelector('.deleteButton');        
-            if(deleteButton) {
-                new DeleteButtonController(deleteButton, product);
-            }
-            
-            this.element.appendChild(productPost);
+        // const deleteButton = productPost.querySelector('.deleteButton');        
+        // if(deleteButton) {
+        //     new DeleteButtonController(deleteButton, product);
+        // }
+        
+        this.element.appendChild(productDetail);
 
-        }
+        
         
     }
 
-    async loadProducts() {
+    async loadProduct() {
         const isUserLogged = await  DataService.isUserLogged();
         if(!isUserLogged) {
             window.location.href="/login.html";
         }
         this.publish(this.events.START_LOADING);
         try { 
-            const products = await DataService.getProducts();
-            this.render(products);
+            const product = await DataService.getProducts(null,this.productId);
+            this.render(product);
         } catch (error){              
             this.publish(this.events.ERROR, error);
         }finally {

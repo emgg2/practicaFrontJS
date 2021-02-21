@@ -8,6 +8,7 @@ export const productView = (product) => {
     }
 
     return `
+    <a href="./edit-product.html?id=${product.id}" tag="Editar \"${product.name}\"">
     <div class = "box">
         ${deleteButtonHTML}
         <img src="${product.picture}" alt="${product.name}">
@@ -17,6 +18,6 @@ export const productView = (product) => {
             <p><b>${product.price}€</b></p>     
             <p class="${product.classSale}">${product.sale}</p>
         </div>
-    </div>`;
+    </div></a>`;
 };
 

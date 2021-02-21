@@ -2,9 +2,36 @@ const BASE_URL = 'http://127.0.0.1:8000';
 const TOKEN_KEY = 'token';
 
 export default {
-    getProducts: async function(query = null) {   
+
+    getDataProduct: function(product, currentUser) {
+        
+        const user = product.user || {};           
+
+        return {
+            id: product.id,
+            name: product.name.replace(/(<([^>]+)>)/gi, ""),
+            price: product.price.replace(/(<([^>]+)>)/gi, ""),
+            sale: product.sale === 'true' ? 'En venta' : 'Se busca',
+            classSale: product.sale === 'true' ? 'sale' : 'lookingFor',
+            picture: product.picture,
+            tags: product.tags.join(' '),
+            canBeDeleted: currentUser ? currentUser.userId === product.userId : false
+
+        }
+
+    }, 
+    getProducts: async function(query = null, id = null) {   
         const currentUser = await this.getUser();
-        const url = `${BASE_URL}/api/products?_expand=user&_sort=id&_order=desc`;
+       
+        let url = ``;
+
+        if(id){
+            url = `${BASE_URL}/api/products/${id}?_expand=user&_sort=id&_order=desc`;
+        }else
+        {
+            url = `${BASE_URL}/api/products?_expand=user&_sort=id&_order=desc`;
+        }
+        
         if(query) {
             url += `&q=${query}`
         }
@@ -13,23 +40,18 @@ export default {
 
         if(response.ok) {
             const data = await response.json();
-            return data.map (product => {
-                const user = product.user || {};
-                
 
+            if(data.length) {
+                return data.map (product => {        
+                    return this.getDataProduct(product, currentUser);                    
+                });
 
-                return {
-                    id: product.id,
-                    name: product.name.replace(/(<([^>]+)>)/gi, ""),
-                    price: product.price.replace(/(<([^>]+)>)/gi, ""),
-                    sale: product.sale === 'true' ? 'En venta' : 'Se busca',
-                    classSale: product.sale === 'true' ? 'sale' : 'lookingFor',
-                    picture: product.picture,
-                    tags: product.tags.join(' '),
-                    canBeDeleted: currentUser ? currentUser.userId === product.userId : false
+            }else
+            {                 
+                return this.getDataProduct(data, currentUser );
+            }
 
-                }
-            });
+           
         } else
         {
             throw new Error (`HTTP Error: ${response.status}`);
@@ -140,7 +162,6 @@ export default {
     }, 
 
     deleteProduct: async function (product) {
-        debugger;
         const url = `${BASE_URL}/api/products/${product.id}`;
         return await this.delete(url);
 
