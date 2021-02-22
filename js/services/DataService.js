@@ -16,10 +16,9 @@ export default {
             picture: product.picture,
             tags: product.tags.join(' '),
             canBeDeleted: currentUser ? currentUser.userId === product.userId : false
-
         }
-
     }, 
+    
     getProducts: async function(query = null, id = null) {   
         const currentUser = await this.getUser();
        
@@ -40,17 +39,20 @@ export default {
 
         if(response.ok) {
             const data = await response.json();
+            if(data.length >= 0) {
+                if(data.length>0) {
+                    return data.map (product => {        
+                        return this.getDataProduct(product, currentUser);                    
+                    });
 
-            if(data.length) {
-                return data.map (product => {        
-                    return this.getDataProduct(product, currentUser);                    
-                });
-
-            }else
-            {                 
-                return this.getDataProduct(data, currentUser );
+                }else
+                { 
+                    return "";    
+                }
+            } else
+            {
+                return this.getDataProduct(data, currentUser );                
             }
-
            
         } else
         {

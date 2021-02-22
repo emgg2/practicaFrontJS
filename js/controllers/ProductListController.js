@@ -2,6 +2,7 @@
 
 import BaseController from "./BaseController.js";
 import {productView} from '../views/productView.js'
+import {noProductsAvailableView} from '../views/noProductsAvailableView.js';
 import DataService from "../services/DataService.js";
 import LoaderController from './LoaderController.js';
 import DeleteButtonController from './DeleteButtonControler.js';
@@ -15,6 +16,12 @@ export default class ProductListController extends BaseController {
         });
     }
 
+    renderNoProductsAvailable() {
+        this.element.innerHTML = "";
+        const productPost = document.createElement('product');
+        productPost.innerHTML = noProductsAvailableView();
+        this.element.appendChild(productPost);
+    }
 
     render (products) {
         this.element.innerHTML = '';
@@ -25,10 +32,8 @@ export default class ProductListController extends BaseController {
             const deleteButton = productPost.querySelector('.deleteButton');        
             if(deleteButton) {
                 new DeleteButtonController(deleteButton, product);
-            }
-            
+            }            
             this.element.appendChild(productPost);
-
         }
         
     }
@@ -41,7 +46,14 @@ export default class ProductListController extends BaseController {
         this.publish(this.events.START_LOADING);
         try { 
             const products = await DataService.getProducts();
-            this.render(products);
+            if (products !== "")
+            {
+                this.render(products);
+            }else
+            {
+                this.renderNoProductsAvailable();
+            }
+            
         } catch (error){              
             this.publish(this.events.ERROR, error);
         }finally {

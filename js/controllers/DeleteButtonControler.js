@@ -10,12 +10,15 @@ export default class DeleteButtonController extends BaseController {
     }
 
     addEventListener() {
-        this.element.addEventListener('click', async ev => {
+        this.element.addEventListener('click', async ev => {     
+
             const deleteConfirmed = confirm("Desea borrar?");            
             if(deleteConfirmed) {
                 await dataService.deleteProduct(this.product);
                 this.publish(this.events.PRODUCT_DELETED, this.product)
+                
             }
+        
         })
     }
 
