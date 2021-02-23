@@ -12,6 +12,8 @@ export default class ProductListController extends BaseController {
     constructor(element) {
         super(element);
         this.subscribe(this.events.PRODUCT_DELETED, ev => {
+            debugger
+            
             this.loadProducts();
         });
     }
@@ -38,11 +40,28 @@ export default class ProductListController extends BaseController {
         
     }
 
+    checkMessage() {
+        debugger;
+        let message = "";
+        const queryParams = window.location.search.replace('?', '');
+        const queryParamsParts = queryParams.split('=');
+        if (queryParamsParts.length >= 2 && queryParamsParts[0] === 'mensaje') {
+            message = queryParamsParts[1];
+            if (message === 'productOK')
+            {
+                message = "El producto se ha creado correctamente";
+            }
+          }
+        this.publish(this.events.ADVISE, message);
+    }
+
     async loadProducts() {
+        
         const isUserLogged = await  DataService.isUserLogged();
         if(!isUserLogged) {
             window.location.href="/login.html";
         }
+        this.checkMessage();
         this.publish(this.events.START_LOADING);
         try { 
             const products = await DataService.getProducts();

@@ -11,7 +11,8 @@ export default class BaseController {
             FINISH_LOADING: 'finishLoading',
             ERROR: 'error',
             CLICK: 'click',
-            PRODUCT_DELETED: 'productDeleted'
+            PRODUCT_DELETED: 'productDeleted',
+            ADVISE: 'advise'
         }
     }
 

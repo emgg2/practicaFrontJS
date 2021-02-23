@@ -13,6 +13,7 @@ export default class NewProductController extends BaseController {
     }
 
     async checkIfUserIsLogged() {
+        
         const userIsLogged = await dataService.isUserLogged();
         if (!userIsLogged) {
             window.location.href = '/login.html?next=/new-product.html';
@@ -71,12 +72,15 @@ export default class NewProductController extends BaseController {
                     product.tags.push(options[i].value);
                 }
             }
-
+            
             this.publish(this.events.START_LOADING);
             try {
                 await dataService.saveProduct(product);
                 window.location.href = '/?mensaje=productOK'
             } catch (error) {
+                if (error.message === "Wrong access token") {
+                    window.location.href = './login.html?mensaje=expiredToken&next=new-product.js';
+                }
                 this.publish(this.events.ERROR, error)
             } finally {
                 this.publish(this.events.FINISH_LOADING)

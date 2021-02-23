@@ -23,7 +23,6 @@ export default {
         const currentUser = await this.getUser();
        
         let url = ``;
-
         if(id){
             url = `${BASE_URL}/api/products/${id}?_expand=user&_sort=id&_order=desc`;
         }else
@@ -56,7 +55,7 @@ export default {
            
         } else
         {
-            throw new Error (`HTTP Error: ${response.status}`);
+            throw new Error (`HTTP Error: ${response.status} ${response.message} --> Se ha producido un error al obtener los datos`);
         }
     },
     post: async function(url, postData, json=true) {
