@@ -15,6 +15,11 @@ export default class AdviseController extends BaseController {
         this.element.innerHTML = adviseView(message);
         this.element.classList.remove('hidden');
 
+        setTimeout( (event) => {            
+                this.element.classList.add('hidden');
+        }, 2000); 
+        
+
         this.element.addEventListener(this.events.CLICK, (event) => {
             if (event.target == this.element || event.target.classList.contains('delete')) {
                 this.element.classList.add('hidden');

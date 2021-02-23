@@ -23,4 +23,24 @@ export default class BaseController {
     publish (eventName, eventHandler) {
         this.pubSub.publish(eventName, eventHandler);
     }
+
+    checkMessage() {
+        debugger;
+        let message = "";
+        const queryParams = window.location.search.replace('?', '');
+        const queryParamsParts = queryParams.split('=');
+        if (queryParamsParts.length >= 2 && queryParamsParts[0] === 'mensaje') {
+            message = queryParamsParts[1];
+            switch (message)
+            {
+                case 'productOK':
+                    message = "El producto se ha creado correctamente";
+                    break;
+                case 'expiredToken':
+                    message = "Su sesión ha expirado, debe registrarse antes de continuar"
+                    break;
+            }
+          }
+        this.publish(this.events.ADVISE, message);
+    }
 }

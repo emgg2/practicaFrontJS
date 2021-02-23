@@ -4,6 +4,8 @@ import dataService from "../services/DataService.js";
 export default class LoginFormController extends BaseController {
   constructor(element) {
     super(element);
+    debugger;
+    this.checkMessage();
     this.attachEventListener();
   }
 
