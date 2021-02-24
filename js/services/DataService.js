@@ -6,7 +6,6 @@ export default {
     getDataProduct: function(product, currentUser) {
         
         const user = product.user || {};           
-
         return {
             id: product.id,
             name: product.name.replace(/(<([^>]+)>)/gi, ""),
@@ -17,6 +16,7 @@ export default {
             tags: product.tags.join(' '),
             canBeDeleted: currentUser ? currentUser.userId === product.userId : false
         }
+   
     }, 
     
     getProducts: async function(query = null, id = null) {   

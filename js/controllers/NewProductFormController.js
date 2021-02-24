@@ -79,7 +79,7 @@ export default class NewProductController extends BaseController {
                 window.location.href = '/?mensaje=productOK'
             } catch (error) {
                 if (error.message === "Wrong access token") {
-                    window.location.href = './login.html?mensaje=expiredToken&next=new-product.js';
+                    window.location.href = './login.html?mensaje=expiredToken&next=new-product.html';
                 }
                 this.publish(this.events.ERROR, error)
             } finally {

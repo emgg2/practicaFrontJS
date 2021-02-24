@@ -12,7 +12,6 @@ export default class ProductListController extends BaseController {
     constructor(element) {
         super(element);
         this.subscribe(this.events.PRODUCT_DELETED, ev => {
-            debugger
             
             this.loadProducts();
         });

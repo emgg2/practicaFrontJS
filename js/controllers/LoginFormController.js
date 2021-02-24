@@ -4,7 +4,6 @@ import dataService from "../services/DataService.js";
 export default class LoginFormController extends BaseController {
   constructor(element) {
     super(element);
-    debugger;
     this.checkMessage();
     this.attachEventListener();
   }
@@ -22,12 +21,17 @@ export default class LoginFormController extends BaseController {
         dataService.saveToken(data.accessToken);
         // TODO: mejorar el control de los query params
         let next = '/';
+        debugger;
         const queryParams = window.location.search.replace('?', '');  // ?next=otrapagina -> next=otrapagina
-        const queryParamsParts = queryParams.split('=');
-        if (queryParamsParts.length >= 2 && queryParamsParts[0] === 'next') {
-          next = queryParamsParts[1];
-        }
-        window.location.href = next;
+        const queryParamsParts = queryParams.split('&');
+        queryParamsParts.forEach(element => {
+          const parameter = element.split('=');
+          if (parameter[0] === 'next') {
+            next = parameter[1];
+            window.location.href = next;
+          }          
+        });
+        
       } catch (error) {
         this.publish(this.events.ERROR, error);
       } finally {

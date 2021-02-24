@@ -16,6 +16,7 @@ export default class DeleteButtonController extends BaseController {
             if(deleteConfirmed) {
                 await dataService.deleteProduct(this.product);
                 this.publish(this.events.PRODUCT_DELETED, this.product)
+                window.location.href="/?mensaje=productDeletedOK";
                 
             }
         

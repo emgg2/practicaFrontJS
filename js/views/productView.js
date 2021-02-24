@@ -2,7 +2,7 @@ export const productView = (product) => {
 
     let sale = "";
     let classValue = "";
-    let deleteButtonHTML = "";
+    let deleteButtonHTML = `<div class ="deleteButtonContainerEmpty"></div>`;
     if( product.canBeDeleted) {
         deleteButtonHTML = `<div class ="deleteButtonContainer"><div class="deleteButton"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></div></div>`
     }

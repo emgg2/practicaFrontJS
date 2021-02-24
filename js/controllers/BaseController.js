@@ -2,6 +2,14 @@
 
 import pubSub from '../services/Pubsub.js';
 
+const messageText = {
+    'productOK' : 'El producto se ha creado correctamente',
+    'expiredToken': 'Su sesión ha expirado, debe registrarse antes de continuar',
+    'productDeletedOK' : 'Su producto se ha eliminado'
+
+
+};
+
 export default class BaseController {
     constructor (element){
         this.element = element;
@@ -25,22 +33,19 @@ export default class BaseController {
     }
 
     checkMessage() {
-        debugger;
         let message = "";
-        const queryParams = window.location.search.replace('?', '');
-        const queryParamsParts = queryParams.split('=');
-        if (queryParamsParts.length >= 2 && queryParamsParts[0] === 'mensaje') {
-            message = queryParamsParts[1];
-            switch (message)
-            {
-                case 'productOK':
-                    message = "El producto se ha creado correctamente";
-                    break;
-                case 'expiredToken':
-                    message = "Su sesión ha expirado, debe registrarse antes de continuar"
-                    break;
+        const queryParams = window.location.search.replace('?', '');               
+        const queryParamsParts = queryParams.split("&");
+        queryParamsParts.forEach(element => {
+            const parameter = element.split('=');
+            if(parameter[0] === 'mensaje') {
+                message = parameter[1];                
+                if(messageText[message])
+                {
+                    message = messageText[message];
+                    this.publish(this.events.ADVISE, message);
+                }                      
             }
-          }
-        this.publish(this.events.ADVISE, message);
+        });        
     }
 }

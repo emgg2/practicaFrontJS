@@ -76,3 +76,8 @@ img {
 .deleteButton:hover {
   color: black;
 }
+
+.deleteButtonContainerEmpty {
+  
+  height: 26px;
+}
