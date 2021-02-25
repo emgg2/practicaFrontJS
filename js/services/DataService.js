@@ -15,8 +15,7 @@ export default {
             picture: product.picture,
             tags: product.tags.join(' '),
             canBeDeleted: currentUser ? currentUser.userId === product.userId : false
-        }
-   
+        }   
     }, 
     
     getProducts: async function(query = null, id = null) {   
@@ -55,7 +54,7 @@ export default {
            
         } else
         {
-            throw new Error (`HTTP Error: ${response.status} ${response.message} --> Se ha producido un error al obtener los datos`);
+            throw new Error (`HTTP Error: ${response.status} ${response.statusText} --> Se ha producido un error al obtener los datos`);
         }
     },
     post: async function(url, postData, json=true) {
@@ -136,7 +135,7 @@ export default {
     },
 
     saveProduct: async function(product) {
-        const url = `${BASE_URL}/api/products`;
+        const url = `${BASE_URL}/api/productsssss`;
         if (product.picture) {
             const imageURL = await this.uploadImage(product.picture);
             product.picture = imageURL;

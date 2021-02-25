@@ -16,7 +16,7 @@ export default class NewProductController extends BaseController {
         
         const userIsLogged = await dataService.isUserLogged();
         if (!userIsLogged) {
-            window.location.href = '/login.html?next=/new-product.html';
+            window.location.href = '/login.html?next=/new-product.html&mensaje=';
         } else {
             this.publish(this.events.FINISH_LOADING);
         }
@@ -78,14 +78,20 @@ export default class NewProductController extends BaseController {
                 await dataService.saveProduct(product);
                 window.location.href = '/?mensaje=productOK'
             } catch (error) {
+                let message = "";
                 if (error.message === "Wrong access token") {
                     window.location.href = './login.html?mensaje=expiredToken&next=new-product.html';
                 }
-                this.publish(this.events.ERROR, error)
+                if(error.message !== "{}")
+                {
+                    message = error.message;
+                }else {
+                    message = 'Se ha producido un error mientras se guardaba.';
+                }
+                this.publish(this.events.ERROR, message)
             } finally {
                 this.publish(this.events.FINISH_LOADING)
             }
         });
-    }
-       
+    }       
 }

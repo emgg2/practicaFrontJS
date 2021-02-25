@@ -11,8 +11,7 @@ export default class ProductListController extends BaseController {
 
     constructor(element) {
         super(element);
-        this.subscribe(this.events.PRODUCT_DELETED, ev => {
-            
+        this.subscribe(this.events.PRODUCT_DELETED, ev => {            
             this.loadProducts();
         });
     }
@@ -29,14 +28,12 @@ export default class ProductListController extends BaseController {
         for(const product of products) {
             const productPost = document.createElement('product');
             productPost.innerHTML = productView(product);
-
             const deleteButton = productPost.querySelector('.deleteButton');        
             if(deleteButton) {
                 new DeleteButtonController(deleteButton, product);
             }            
             this.element.appendChild(productPost);
-        }
-        
+        }        
     }
    
     async loadProducts() {
@@ -55,8 +52,7 @@ export default class ProductListController extends BaseController {
             }else
             {
                 this.renderNoProductsAvailable();
-            }
-            
+            }            
         } catch (error){              
             this.publish(this.events.ERROR, error);
         }finally {
