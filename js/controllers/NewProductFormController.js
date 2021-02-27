@@ -1,6 +1,8 @@
 import BaseController from './BaseController.js';
 import dataService from '../services/DataService.js';
+import { messageText } from '../../data/messageText.js';
 
+const NEXT_URL = 'new-product.html';
 
 export default class NewProductController extends BaseController {
 
@@ -16,14 +18,15 @@ export default class NewProductController extends BaseController {
         
         const userIsLogged = await dataService.isUserLogged();
         if (!userIsLogged) {
-            window.location.href = '/login.html?next=/new-product.html&mensaje=';
+            window.location.href = '/login.html?mensaje=missingLogin&next='+NEXT_URL;
         } else {
             this.publish(this.events.FINISH_LOADING);
         }
     }
 
   
-    focusInDescription() {       
+    focusInDescription() { 
+        debugger;      
         const description = this.element.querySelector("input[name='description']");
         description.focus();
     }
@@ -55,8 +58,9 @@ export default class NewProductController extends BaseController {
 
         // check whem the form is sended
         this.element.addEventListener('submit', async event => {
-            event.preventDefault();  
-         
+
+            event.preventDefault();          
+
             const product = {
                 name: this.element.elements.description.value,
                 price: this.element.elements.price.value,
@@ -78,19 +82,10 @@ export default class NewProductController extends BaseController {
                 await dataService.saveProduct(product);
                 window.location.href = '/?mensaje=productOK'
             } catch (error) {
-                let message = "";
-                if (error.message === "Wrong access token") {
-                    window.location.href = './login.html?mensaje=expiredToken&next=new-product.html';
-                }
-                if(error.message !== "{}")
-                {
-                    message = error.message;
-                }else {
-                    message = 'Se ha producido un error mientras se guardaba.';
-                }
-                this.publish(this.events.ERROR, message)
+                const message = this.getMessageError(error, NEXT_URL);       
+                this.publish(this.events.ERROR, message);
             } finally {
-                this.publish(this.events.FINISH_LOADING)
+                this.publish(this.events.FINISH_LOADING);
             }
         });
     }       

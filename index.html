@@ -11,25 +11,38 @@
     <title>Nodepop</title>
 </head>
 <body>
+  <nav id="navbar" class="navbar">        
+    <div class="logo"><a href="/">Nodepop</a></div> 
+    
+    <div class="container-buscador">
+    <div class="buscador">
+        <form action="index.html" method="GET"></form>
+            <input type="text" name="input" alt="Texto de búsqueda">        
+      </div>
+    </div>
+    <ul class="navbar-list">        
+        <li class="navbar-item"><a href="/login.html">Cerrar sesión</a></li>
+    </ul>
+  </nav>
   <div class="content-loader"><div class="lds-ripple"><div></div><div></div></div></div>
-
-  <div class="global-info hidden"></div>
   
-  <div class="content">
+  <div class="container">
+    <div class="global-info hidden"></div>
+
+     <div class="content">
       <main class="products-list">
         <article> </article>
       </main>            
+    </div>
   </div>
 
   <div class="new-product">
-
     <a href="/new-product.html" class="button is-primary is-hidden new-product-button">New Product</a>
     <span class="is-hidden login-register-buttons">
         <a href="/login.html" class="button is-primary">Login</a> or
         <a href="/register.html" class="button is-primary">Register</a>
     </span>
   </div>
-
   <script type="module" src="./js/index.js"></script>
 </body>
 </html>

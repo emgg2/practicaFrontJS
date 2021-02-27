@@ -1,6 +1,8 @@
 import BaseController from "./BaseController.js";
 import dataService from "../services/DataService.js";
 
+const NEXT_URL = 'login.html';
+
 export default class LoginFormController extends BaseController {
   constructor(element) {
     super(element);
@@ -10,7 +12,7 @@ export default class LoginFormController extends BaseController {
 
   attachEventListener() {
     this.element.addEventListener("submit", async (event) => {
-      event.preventDefault(); // evita que se enví el formulario (comportamiento por defecto)
+      event.preventDefault(); 
       const user = {
         username: this.element.elements.email.value,
         password: this.element.elements.password.value,
@@ -19,22 +21,28 @@ export default class LoginFormController extends BaseController {
       this.publish(this.events.START_LOADING);
       try {
         const data = await dataService.login(user);
-        dataService.saveToken(data.accessToken);
-        // TODO: mejorar el control de los query params
+        dataService.saveToken(data.accessToken);        
         let next = '/';
-        const queryParams = window.location.search.replace('?', '');  // ?next=otrapagina -> next=otrapagina
+        const queryParams = window.location.search.replace('?', '');  
         if(queryParams != "") {
           const queryParamsParts = queryParams.split('&');
           queryParamsParts.forEach(element => {
             const parameter = element.split('=');
             if (parameter[0] === 'next') {
-              next = parameter[1];                      
+              if(parameter[2])
+              {
+                next = parameter[1]+"="+parameter[2];                      
+              }else
+              {
+                next = parameter[1]
+              }              
             }          
         });
        }
         window.location.href = next;
       } catch (error) {
-        this.publish(this.events.ERROR, error);
+        const message = this.getMessageError(error, NEXT_URL);
+        this.publish(this.events.ERROR, message);
       } finally {
         this.publish(this.events.FINISH_LOADING);
       }
@@ -43,7 +51,7 @@ export default class LoginFormController extends BaseController {
     this.element.querySelectorAll("input").forEach((input) => {
       const button = this.element.querySelector("button");
       input.addEventListener("keyup", (event) => {
-        // si el input es OK lo marco en verde, si no, en rojo
+        //Green if input value is OK, in red if it isn't
         if (input.validity.valid) {
           input.classList.add("is-success");
           input.classList.remove("is-danger");
@@ -52,10 +60,9 @@ export default class LoginFormController extends BaseController {
           input.classList.add("is-danger");
         }
 
-        // valido si todo el formulario es OK para habilitar o deshabilitar el botón
+        // enable button if data form is OK
         if (this.element.checkValidity()) {
-          button.removeAttribute("disabled");
-          // button.setAttribute('disabled', false); // esto también valdría
+          button.removeAttribute("disabled");          
         } else {
           button.setAttribute("disabled", true);
         }

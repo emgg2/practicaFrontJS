@@ -1,0 +1,111 @@
+
+.navbar {
+    background-color: black;
+    width: 100%;
+    top:0;
+    left: 0;
+    height: var(--navbar-height);
+    z-index: 1;
+    }
+    
+    .logo {
+      color: white;
+      font-size: 1.5rem;
+      line-height: var(--navbar-height);
+      text-align: center; 
+      
+    }
+    
+    .logo::first-letter{
+      color: var(--color-first-letter);
+    }
+    
+    .navbar li {
+      font-size: 1.5rem; 
+      text-align: center;  
+    
+    }
+    .navbar a {
+      color:white;
+      text-decoration: none;
+    }
+    
+    .container-buscador
+    {
+      display:none;
+      height: var(--navbar-height);
+      border-bottom: 1px solid darkgrey;
+      border-top: 1px solid darkgrey;
+      background-color: black;
+      line-height: var(--navbar-height);  
+    }
+    
+    .buscador {
+      background-color: white;
+      background-image: url(../images/search-icon.png);
+      background-repeat: no-repeat;
+      background-position: 4px center;
+      background-size: 20px;
+      display: flex;
+      align-items: center;
+      width: 90%;
+      padding-left: 28px;
+      height: 30px;
+      border: 1px solid darkgrey;
+      border-radius: 3px;
+      ;
+    }
+    
+    .buscador input {
+      width: 100%;
+      height: 30px;
+      font-size: 1.1rem; 
+      z-index: 3;
+    }
+    
+    .buscador input:focus {
+      outline: none;
+    }
+        
+    @media (min-width: 768px) {
+      .navbar {
+        display:flex;
+        justify-content: space-between;
+      }
+    
+      .navbar .logo {
+        margin: 0 1rem;
+      }
+    
+      .navbar .burger-label{
+        display:none;
+      }
+    
+      .navbar-list {
+        display: flex; 
+      }
+    
+      .container-buscador {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border: 0;        
+      }
+     
+      .navbar-list a {
+        color: white;
+        font-size: 1.2rem;
+        line-height: var(--navbar-height);
+        padding: 0.1rem 1rem;
+        white-space: nowrap;
+      }
+    
+      .navbar-list a:hover {
+        background-color: #00d1b2;
+        color: black;
+        
+      }
+    
+    }
+    
+    

@@ -1,6 +1,8 @@
 import DataService from '../services/DataService.js';
 import BaseController from './BaseController.js';
 
+const NEXT_URL = 'register.html';
+
 export default class RegisterFormController extends BaseController {
 
     constructor(element) {
@@ -10,8 +12,7 @@ export default class RegisterFormController extends BaseController {
 
     async addNewUser(user) {
         await DataService.registerUser(user);
-        alert("User created");
-        window.location.href = './login.html';
+        window.location.href = './login.html?mensaje=userCreated';
     }
 
     addEventListener() {
@@ -49,7 +50,8 @@ export default class RegisterFormController extends BaseController {
             try {
                 await this.addNewUser(newUser);
             }catch(error) {
-                this.publish(this.events.ERROR, error);
+                const message = this.getMessageError(error, NEXT_URL);
+                this.publish(this.events.ERROR, message);
             }finally {
                 this.publish(this.events.FINISH_LOADING);
             }

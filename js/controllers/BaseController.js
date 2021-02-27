@@ -1,14 +1,8 @@
 'use strict';
 
 import pubSub from '../services/Pubsub.js';
+import { messageText } from '../../data/messageText.js';
 
-const messageText = {
-    'productOK' : 'El producto se ha creado correctamente',
-    'expiredToken': 'Su sesión ha expirado, debe registrarse antes de continuar',
-    'productDeletedOK' : 'Su producto se ha eliminado'
-
-
-};
 
 export default class BaseController {
     constructor (element){
@@ -47,5 +41,18 @@ export default class BaseController {
                 }                      
             }
         });        
+    }
+
+    getMessageError(error,nextText) { 
+        switch (error.message)
+        {
+            case "Wrong access token":
+                window.location.href = '/login.html?mensaje=expiredToken&next='+nextText;
+                break;           
+            default:
+                const messageKey= 'genericError';
+                return messageText[messageKey];
+        }  
+               
     }
 }

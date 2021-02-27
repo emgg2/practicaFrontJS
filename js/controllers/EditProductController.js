@@ -6,6 +6,7 @@ import DataService from "../services/DataService.js";
 import LoaderController from './LoaderController.js';
 import DeleteButtonController from './DeleteButtonControler.js';
 
+const NEXT_URL = 'edit-product.html?id=';
 export default class ProductListController extends BaseController {
 
     constructor(element, productId) {
@@ -27,23 +28,22 @@ export default class ProductListController extends BaseController {
         //     new DeleteButtonController(deleteButton, product);
         // }
         
-        this.element.appendChild(productDetail);
-
-        
+        this.element.appendChild(productDetail);      
         
     }
 
     async loadProduct() {
         const isUserLogged = await  DataService.isUserLogged();
         if(!isUserLogged) {
-            window.location.href="/login.html";
+            window.location.href="/login.html?mensaje=missingLogin&next="+NEXT_URL+this.productId;
         }
         this.publish(this.events.START_LOADING);
         try { 
             const product = await DataService.getProducts(null,this.productId);
             this.render(product);
-        } catch (error){              
-            this.publish(this.events.ERROR, error);
+        } catch (error){    
+            const message = this.getMessageError(error, NEXT_URL+this.productId);          
+            this.publish(this.events.ERROR, message);
         }finally {
             this.publish(this.events.FINISH_LOADING);
         }

@@ -1,5 +1,11 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css";
+@import "./navbar.css";
 
+:root {
+  --navbar-height:3rem;
+  --color-first-letter:#00c4a7;
+  --max-width:900px;
+}
 
 body {
  margin:0px;
@@ -15,9 +21,6 @@ a {
 .content {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
 }
 
 product {
@@ -80,4 +83,14 @@ img {
 .deleteButtonContainerEmpty {
   
   height: 26px;
+}
+
+.global-info {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.global-errors {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

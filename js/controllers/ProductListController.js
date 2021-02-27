@@ -7,6 +7,8 @@ import DataService from "../services/DataService.js";
 import LoaderController from './LoaderController.js';
 import DeleteButtonController from './DeleteButtonControler.js';
 
+const NEXT_URL = '/';
+
 export default class ProductListController extends BaseController {
 
     constructor(element) {
@@ -40,7 +42,7 @@ export default class ProductListController extends BaseController {
         
         const isUserLogged = await  DataService.isUserLogged();
         if(!isUserLogged) {
-            window.location.href="/login.html";
+            window.location.href="/login.html?mensaje=missingLogin&next="+NEXT_URL;
         }
         this.checkMessage();
         this.publish(this.events.START_LOADING);
@@ -53,8 +55,9 @@ export default class ProductListController extends BaseController {
             {
                 this.renderNoProductsAvailable();
             }            
-        } catch (error){              
-            this.publish(this.events.ERROR, error);
+        } catch (error){
+            const message = this.getMessageError(error);              
+            this.publish(this.events.ERROR, message);
         }finally {
             this.publish(this.events.FINISH_LOADING);
         }

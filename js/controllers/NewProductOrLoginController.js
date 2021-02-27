@@ -2,6 +2,7 @@ import BaseController from './BaseController.js';
 import dataService from '../services/DataService.js';
 
 
+
 export default class NewProductOrLoginController extends BaseController {
 
     constructor(element) {

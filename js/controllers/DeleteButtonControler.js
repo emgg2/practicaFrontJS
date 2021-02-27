@@ -1,5 +1,6 @@
 import BaseController from './BaseController.js';
 import dataService from '../services/DataService.js';
+const NEXT_URL = '/';
 
 export default class DeleteButtonController extends BaseController {
 
@@ -10,15 +11,23 @@ export default class DeleteButtonController extends BaseController {
     }
 
     addEventListener() {
-        this.element.addEventListener('click', async ev => {     
+        this.element.addEventListener('click', async ev => {   
+        
 
-            const deleteConfirmed = confirm("Desea borrar?");            
-            if(deleteConfirmed) {
-                await dataService.deleteProduct(this.product);
-                this.publish(this.events.PRODUCT_DELETED, this.product)
-                window.location.href="/?mensaje=productDeletedOK";
-                
-            }
+            const isUserLogged = await  dataService.isUserLogged();
+             
+            if(!isUserLogged) {
+                window.location.href="/login.html?mensaje=missingLogin&next="+NEXT_URL;
+            }else 
+            {
+                const deleteConfirmed = confirm("Desea borrar?");            
+                if(deleteConfirmed) {
+                    await dataService.deleteProduct(this.product);
+                    this.publish(this.events.PRODUCT_DELETED, this.product)
+                    window.location.href="/?mensaje=productDeletedOK";
+                    
+                }
+            }           
         
         })
     }
