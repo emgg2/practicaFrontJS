@@ -115,6 +115,10 @@ export default {
         localStorage.setItem(TOKEN_KEY, token);
     },
 
+    removeToken: async function() {
+        localStorage.removeItem(TOKEN_KEY);
+    },
+
     isUserLogged: async function(){
         const token = await this.getToken();
         return token !== null;
