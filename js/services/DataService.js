@@ -54,7 +54,7 @@ export default {
            
         } else
         {
-            throw new Error (`HTTP Error: ${response.status} ${response.statusText} --> Se ha producido un error al obtener los datos`);
+            throw new Error (response.statusText);
         }
     },
     post: async function(url, postData, json=true) {
@@ -149,7 +149,6 @@ export default {
 
     getUser: async function () {
         try {
-
             const token = await this.getToken();
             const tokenParts = token.split(".");
             if(tokenParts.length !== 3) {

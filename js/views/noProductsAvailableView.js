@@ -1,6 +1,9 @@
 export const noProductsAvailableView = () => {
     return `
-        <p> No hay productos disponibles</p>
+         <div class="notification is-info is-light">
+            <strong>No hay productos </strong>
+        </div>
+        
     `;
 };
 

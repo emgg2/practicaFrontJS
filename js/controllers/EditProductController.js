@@ -42,6 +42,7 @@ export default class ProductListController extends BaseController {
             const product = await DataService.getProducts(null,this.productId);
             this.render(product);
         } catch (error){    
+            debugger;
             const message = this.getMessageError(error, NEXT_URL+this.productId);          
             this.publish(this.events.ERROR, message);
         }finally {

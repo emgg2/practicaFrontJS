@@ -45,15 +45,20 @@ export default class BaseController {
     }
 
     getMessageError(error,nextText) { 
+        let messageKey = "";
+        debugger;
         switch (error.message)
         {
+            case "Not Found" : 
+                messageKey = 'notFound';
+                break;
             case "Wrong access token":
                 window.location.href = '/login.html?mensaje=expiredToken&next='+nextText;
                 break;           
             default:
-                const messageKey= 'genericError';
-                return messageText[messageKey];
+                 messageKey= 'genericError';
         }  
+        return messageText[messageKey];
                
     }
 }
