@@ -16,6 +16,9 @@ export default class ProductListController extends BaseController {
         this.subscribe(this.events.PRODUCT_DELETED, ev => {            
             this.loadProducts();
         });
+        this.subscribe(this.events.SEARCH, query => {
+            this.loadProducts(query);
+        })
     }
 
     renderNoProductsAvailable() {
@@ -38,7 +41,7 @@ export default class ProductListController extends BaseController {
         }        
     }
    
-    async loadProducts() {
+    async loadProducts(query = null) {
         
         const isUserLogged = await  DataService.isUserLogged();
         if(!isUserLogged) {
@@ -47,7 +50,7 @@ export default class ProductListController extends BaseController {
         this.checkMessage();
         this.publish(this.events.START_LOADING);
         try { 
-            const products = await DataService.getProducts();
+            const products = await DataService.getProducts(query);
             if (products !== "")
             {
                 this.render(products);

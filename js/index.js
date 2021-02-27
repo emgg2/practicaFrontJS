@@ -4,6 +4,7 @@ import ProductListController from './controllers/ProductListController.js';
 import ErrorController from './controllers/ErrorController.js';
 import AdviseController from './controllers/AdviseController.js';
 import NewProductOrLoginController from './controllers/NewProductOrLoginController.js';
+import SearchController from './controllers/SearchController.js';
 
 
 window.addEventListener('DOMContentLoaded', async (event) =>{
@@ -24,4 +25,7 @@ window.addEventListener('DOMContentLoaded', async (event) =>{
     const newProductButtons = document.querySelector('.new-product');
     new NewProductOrLoginController(newProductButtons);
 
+    debugger;
+    const searchInput = document.querySelector('input[type="search"]');
+    new SearchController(searchInput);
 })

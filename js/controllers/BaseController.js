@@ -14,7 +14,8 @@ export default class BaseController {
             ERROR: 'error',
             CLICK: 'click',
             PRODUCT_DELETED: 'productDeleted',
-            ADVISE: 'advise'
+            ADVISE: 'advise',
+            SEARCH: 'search'
         }
     }
 
