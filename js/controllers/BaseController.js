@@ -1,7 +1,7 @@
 'use strict';
 
 import pubSub from '../services/Pubsub.js';
-import { messageText } from '../../data/messageText.js';
+import { messageText } from '../../data/translate/messageText.js';
 
 export default class BaseController {
     constructor (element){

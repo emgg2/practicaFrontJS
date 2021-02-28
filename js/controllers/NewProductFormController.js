@@ -1,6 +1,6 @@
 import BaseController from './BaseController.js';
 import dataService from '../services/DataService.js';
-import { messageText } from '../../data/messageText.js';
+import { messageText } from '../../data/translate/messageText.js';
 
 const NEXT_URL = 'new-product.html';
 
