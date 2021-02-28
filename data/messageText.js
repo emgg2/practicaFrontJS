@@ -7,8 +7,9 @@ const messageText = {
         'userCreated': 'Su usuario ha sido registrado correctamente. Haga login para empezar a utilizar nodepop. Gracias por su confianza',
         'genericError': 'Se ha producido un error durante la operación.',
         'seeYouSoon' : 'Hasta pronto',
-        'notFound' : 'Elemento no encontrado'   
-
+        'notFound' : 'Elemento no encontrado',
+        'userTaken' : 'El usuario ya existe'  ,
+        'wrongUsernamePass': 'El usuario o password indicados no son correctos'
         };
 
 

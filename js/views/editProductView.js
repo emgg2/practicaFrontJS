@@ -1,5 +1,14 @@
 export const editProductView = (product) => {
-    const deleteButtonHTML = "";
+    let deleteButtonHTML = "";
+
+    if( product.canBeDeleted) {
+        deleteButtonHTML = `<a class="level-item" aria-label="reply">
+          <span class="icon is-small">
+            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>  
+          </span>
+          </a>`;
+    }
+    
     return `
     <div class="box">
     <article class="media">
@@ -32,12 +41,7 @@ export const editProductView = (product) => {
       </table>
       <nav class="level">
         <div class="level-left">
-          <a class="level-item" aria-label="reply">
-
-            <span class="icon is-small">
-            <i class="fa fa-trash fa-lg" aria-hidden="true"></i>  
-            </span>
-          </a>
+          ${deleteButtonHTML}
           <a class="level-item" aria-label="retweet">
             <span class="icon is-small">
               <i class="fa fa-retweet" aria-hidden="true"></i>

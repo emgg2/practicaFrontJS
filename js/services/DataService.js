@@ -90,7 +90,7 @@ export default {
         if (response.ok) {
             return data;
         } else {            
-            if(data.error === '401') {
+            if(response.status === '401') {
                 this.removeToken();
             }            
             throw new Error(data.message || JSON.stringify(data));

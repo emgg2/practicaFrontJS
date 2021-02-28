@@ -52,7 +52,13 @@ export default class BaseController {
                 break;
             case "Wrong access token":
                 window.location.href = '/login.html?mensaje=expiredToken&next='+nextText;
-                break;           
+                break;      
+            case "Username is taken":
+                messageKey = 'userTaken';
+                break;    
+            case "Wrong username/password":
+                messageKey = 'wrongUsernamePass';
+                break; 
             default:
                  messageKey= 'genericError';
         }  

@@ -1,1 +1,143 @@
-{"tags":[{"name":"lifestyle"},{"name":"motor"},{"name":"mobile"},{"name":"work"}],"products":[{"name":"Product2","price":"14,32","sale":"true","tags":["motor","work"],"userId":10,"updatedAt":"2021-02-20T16:45:51.668Z","id":5},{"name":"Guitarra","price":"300","picture":"http://127.0.0.1:8000/file-1613839622447.jpg","sale":"true","tags":["lifestyle","work"],"userId":10,"updatedAt":"2021-02-20T16:47:02.514Z","id":6}],"users":[{"id":1,"username":"luke@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":2,"username":"anakin@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":3,"username":"leia@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":4,"username":"chewe@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":5,"username":"han@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":6,"username":"c3po@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":7,"username":"yoda@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":8,"username":"papatine@starwars.com","password":"$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"},{"id":9,"username":"alberto@kasfactory.net","password":"$2b$10$GyarejZrcK4/A54R/cFRtextW/seSpVIkFYjO2ggMbPePQaWe9g1G"},{"id":10,"username":"eva6@kk.es","password":"$2b$10$k94bpHO9WUwdJHF6ouIgCuWOnUSKTZakn8YOOcPHwHyHGhddQQfl2"},{"id":11,"username":"eva@kk2.es","password":"$2b$10$f8uyu14Y8byej.K1jcZc/./2seOfLLrJv9/IED5pwysxML50jISlm"}]}
+{
+  "tags": [
+    {
+      "name": "lifestyle"
+    },
+    {
+      "name": "motor"
+    },
+    {
+      "name": "mobile"
+    },
+    {
+      "name": "work"
+    }
+  ],
+  "products": [
+    {
+      "name": "Bici",
+      "price": "150",
+      "picture": "http://127.0.0.1:8000/file-1614015137233.jpeg",
+      "sale": "true",
+      "tags": [
+        "mobile"
+      ],
+      "userId": 9,
+      "updatedAt": "2021-02-22T17:32:17.254Z",
+      "id": 1
+    },
+    {
+      "name": "iPhone",
+      "price": "500",
+      "picture": "http://127.0.0.1:8000/file-1614015159989.jpeg",
+      "sale": "true",
+      "tags": [
+        "mobile"
+      ],
+      "userId": 10,
+      "updatedAt": "2021-02-22T17:32:40.004Z",
+      "id": 2
+    },
+    {
+      "name": "Rain Boots",
+      "price": "25",
+      "picture": "http://127.0.0.1:8000/file-1614015182266.jpeg",
+      "sale": "false",
+      "tags": [
+        "lifestyle"
+      ],
+      "userId": 9,
+      "updatedAt": "2021-02-22T17:33:02.287Z",
+      "id": 3
+    },
+    {
+      "name": "Panama Boots",
+      "price": "150",
+      "picture": "http://127.0.0.1:8000/file-1614429088455.jpeg",
+      "sale": "true",
+      "tags": [
+        "lifestyle"
+      ],
+      "userId": 10,
+      "updatedAt": "2021-02-27T12:31:28.487Z",
+      "id": 4
+    },
+    {
+      "name": "Panama Boots",
+      "price": "14,32",
+      "picture": "http://127.0.0.1:8000/file-1614431762968.jpeg",
+      "sale": "true",
+      "tags": [],
+      "userId": 10,
+      "updatedAt": "2021-02-27T13:16:02.992Z",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "luke@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 2,
+      "username": "anakin@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 3,
+      "username": "leia@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 4,
+      "username": "chewe@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 5,
+      "username": "han@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 6,
+      "username": "c3po@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 7,
+      "username": "yoda@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 8,
+      "username": "papatine@starwars.com",
+      "password": "$2b$10$KxqTnqj.uqyuXCNzKnJBse2TK/5GyaZLluzR6AZETLcHN6D/uAarm"
+    },
+    {
+      "id": 9,
+      "username": "alberto@kasfactory.net",
+      "password": "$2b$10$GyarejZrcK4/A54R/cFRtextW/seSpVIkFYjO2ggMbPePQaWe9g1G"
+    },
+    {
+      "id": 10,
+      "username": "eva6@kk.es",
+      "password": "$2b$10$k94bpHO9WUwdJHF6ouIgCuWOnUSKTZakn8YOOcPHwHyHGhddQQfl2"
+    },
+    {
+      "id": 11,
+      "username": "eva@kk2.es",
+      "password": "$2b$10$f8uyu14Y8byej.K1jcZc/./2seOfLLrJv9/IED5pwysxML50jISlm"
+    },
+    {
+      "username": "evagarcia@kk.es",
+      "password": "$2b$10$DYBY8y1GO5ratG9f0W7tPuZ7z2b4p3cl9KXO9fAcOx5oAHTse/F.G",
+      "id": 12
+    },
+    {
+      "username": "eva7@kk.es",
+      "password": "$2b$10$DYBY8y1GO5ratG9f0W7tPuZ7z2b4p3cl9KXO9fAcOx5oAHTse/F.G",
+      "id": 13
+    }
+  ]
+}

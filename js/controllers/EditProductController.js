@@ -23,10 +23,10 @@ export default class ProductListController extends BaseController {
         const productDetail = document.createElement('product');
         productDetail.innerHTML = editProductView(product);
 
-        // const deleteButton = productPost.querySelector('.deleteButton');        
-        // if(deleteButton) {
-        //     new DeleteButtonController(deleteButton, product);
-        // }
+        const deleteButton = productDetail.querySelector('.fa-trash');        
+        if(deleteButton) {
+            new DeleteButtonController(deleteButton, product);
+        }
         
         this.element.appendChild(productDetail);      
         
