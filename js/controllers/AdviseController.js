@@ -17,8 +17,7 @@ export default class AdviseController extends BaseController {
 
         setTimeout( (event) => {            
                 this.element.classList.add('hidden');
-        }, 10000); 
-        
+        }, 10000);         
 
         this.element.addEventListener(this.events.CLICK, (event) => {
             if (event.target == this.element || event.target.classList.contains('delete')) {

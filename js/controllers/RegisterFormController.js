@@ -16,7 +16,6 @@ export default class RegisterFormController extends BaseController {
     }
 
     addEventListener() {
-
         this.element.querySelectorAll('input').forEach(input => {
             const button = this.element.querySelector('button');
             input.addEventListener('keyup', event => {

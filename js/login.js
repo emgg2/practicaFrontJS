@@ -1,3 +1,4 @@
+'use strict';
 import LoaderController from './controllers/LoaderController.js';
 import ErrorController from './controllers/ErrorController.js';
 import AdviseController from './controllers/AdviseController.js';

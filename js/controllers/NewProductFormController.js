@@ -14,8 +14,7 @@ export default class NewProductController extends BaseController {
         this.focusInDescription();
     }
 
-    async checkIfUserIsLogged() {
-        
+    async checkIfUserIsLogged() {        
         const userIsLogged = await dataService.isUserLogged();
         if (!userIsLogged) {
             window.location.href = '/login.html?mensaje=missingLogin&next='+NEXT_URL;
@@ -23,20 +22,16 @@ export default class NewProductController extends BaseController {
             this.publish(this.events.FINISH_LOADING);
         }
     }
-
   
-    focusInDescription() { 
-        debugger;      
+    focusInDescription() {    
         const description = this.element.querySelector("input[name='description']");
         description.focus();
     }
 
-    attachEventListeners() {
-       // a medida que el usuario escribe, comprobamos si el formulario es válido para habiltiar o no el botón de enviar
+    attachEventListeners() {       
        this.element.querySelectorAll("input").forEach((input) => {
         const button = this.element.querySelector("button");
-        input.addEventListener("keyup", (event) => {
-          // si el input es OK lo marco en verde, si no, en rojo
+        input.addEventListener("keyup", (event) => {          
           if (input.validity.valid) {
             input.classList.add("is-success");
             input.classList.remove("is-danger");
@@ -44,8 +39,7 @@ export default class NewProductController extends BaseController {
             input.classList.remove("is-success");
             input.classList.add("is-danger");
           }
-  
-          // valido si todo el formulario es OK para habilitar o deshabilitar el botón
+            
           if (this.element.checkValidity()) {
             button.removeAttribute("disabled");
             
@@ -56,9 +50,8 @@ export default class NewProductController extends BaseController {
       });
         
 
-        // check whem the form is sended
+        // check when the form is sended
         this.element.addEventListener('submit', async event => {
-
             event.preventDefault();          
 
             const product = {

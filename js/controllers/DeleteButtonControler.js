@@ -11,11 +11,8 @@ export default class DeleteButtonController extends BaseController {
     }
 
     addEventListener() {
-        this.element.addEventListener('click', async ev => {   
-        
-
-            const isUserLogged = await  dataService.isUserLogged();
-             
+        this.element.addEventListener('click', async ev => {           
+            const isUserLogged = await  dataService.isUserLogged();             
             if(!isUserLogged) {
                 window.location.href="/login.html?mensaje=missingLogin&next="+NEXT_URL;
             }else 
@@ -24,12 +21,9 @@ export default class DeleteButtonController extends BaseController {
                 if(deleteConfirmed) {
                     await dataService.deleteProduct(this.product);
                     this.publish(this.events.PRODUCT_DELETED, this.product)
-                    window.location.href="/?mensaje=productDeletedOK";
-                    
+                    window.location.href="/?mensaje=productDeletedOK";                    
                 }
-            }           
-        
+            }                   
         })
     }
-
 }

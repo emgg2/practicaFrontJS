@@ -41,8 +41,7 @@ export default class ProductListController extends BaseController {
         }        
     }
    
-    async loadProducts(query = null) {
-        
+    async loadProducts(query = null) {        
         const isUserLogged = await  DataService.isUserLogged();
         if(!isUserLogged) {
             window.location.href="/login.html?mensaje=missingLogin&next="+NEXT_URL;

@@ -77,7 +77,7 @@ export default {
         };
         if (json) {
             config.headers['Content-Type'] = 'application/json';
-            config.body = JSON.stringify(postData);  // convierte el objeto de usuarios en un JSON
+            config.body = JSON.stringify(postData);
         } else {
             config.body = postData;
         }
@@ -86,12 +86,13 @@ export default {
             config.headers['Authorization'] = `Bearer ${token}`;
         }
         const response = await fetch(url, config);
-        const data = await response.json();  // respuesta del servidor sea OK o sea ERROR.
+        const data = await response.json(); 
         if (response.ok) {
             return data;
         } else {            
-            // TODO: mejorar gestión de errores
-            // TODO: si la respuesta es un 401 no autorizado, debemos borrar el token (si es que lo tenemos);
+            if(data.error === '401') {
+                this.removeToken();
+            }            
             throw new Error(data.message || JSON.stringify(data));
         }
     },

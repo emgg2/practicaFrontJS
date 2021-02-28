@@ -12,8 +12,7 @@ export default class TagsController extends BaseController {
             const tagOption = document.createElement('option');
             tagOption.innerHTML = tagView(tag);
             this.element.appendChild(tagOption);
-        }
-        
+        }        
     }
 
     async loadTags() {        

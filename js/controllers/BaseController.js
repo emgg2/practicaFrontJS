@@ -3,7 +3,6 @@
 import pubSub from '../services/Pubsub.js';
 import { messageText } from '../../data/messageText.js';
 
-
 export default class BaseController {
     constructor (element){
         this.element = element;
@@ -46,7 +45,6 @@ export default class BaseController {
 
     getMessageError(error,nextText) { 
         let messageKey = "";
-        debugger;
         switch (error.message)
         {
             case "Not Found" : 
