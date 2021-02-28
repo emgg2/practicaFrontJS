@@ -5,7 +5,6 @@ import {productView} from '../views/productView.js'
 import {noProductsAvailableView} from '../views/noProductsAvailableView.js';
 import DataService from "../services/DataService.js";
 import LoaderController from './LoaderController.js';
-import DeleteButtonController from './DeleteButtonControler.js';
 
 const NEXT_URL = '/';
 
@@ -32,11 +31,7 @@ export default class ProductListController extends BaseController {
         this.element.innerHTML = '';
         for(const product of products) {
             const productPost = document.createElement('product');
-            productPost.innerHTML = productView(product);
-            const deleteButton = productPost.querySelector('.deleteButton');        
-            if(deleteButton) {
-                new DeleteButtonController(deleteButton, product);
-            }            
+            productPost.innerHTML = productView(product);              
             this.element.appendChild(productPost);
         }        
     }
