@@ -1,7 +1,10 @@
 import LoaderController from './controllers/LoaderController.js';
 import ErrorController from './controllers/ErrorController.js';
 import EditProductController from './controllers/EditProductController.js';
-import CloseSessionController from './controllers/CloseSessionController.js'
+import SearchController from './controllers/SearchController.js';
+import CloseSessionController from './controllers/CloseSessionController.js';
+import NavbarController from './controllers/NavbarController.js';
+
 
 window.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.lds-ring');
@@ -18,6 +21,12 @@ window.addEventListener('DOMContentLoaded', () => {
     const editProductController = new EditProductController(formElement,productId);
     editProductController.loadProduct();
 
+    const navbar = document.querySelector('.navbar');
+    new NavbarController(navbar);
+   
+    const searchInput = document.querySelector('input[type="search"]');
+    new SearchController(searchInput);
+    
     const closeSession = document.querySelector('a[name="close-session"');
     new CloseSessionController(closeSession);
     

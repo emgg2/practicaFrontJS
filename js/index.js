@@ -6,6 +6,7 @@ import AdviseController from './controllers/AdviseController.js';
 import NewProductOrLoginController from './controllers/NewProductOrLoginController.js';
 import SearchController from './controllers/SearchController.js';
 import CloseSessionController from './controllers/CloseSessionController.js';
+import NavbarController from './controllers/NavbarController.js';
 
 
 window.addEventListener('DOMContentLoaded', async (event) =>{
@@ -26,6 +27,9 @@ window.addEventListener('DOMContentLoaded', async (event) =>{
     const newProductButtons = document.querySelector('.new-product');
     new NewProductOrLoginController(newProductButtons);
 
+    const navbar = document.querySelector('.navbar');
+    new NavbarController(navbar);
+   
     const searchInput = document.querySelector('input[type="search"]');
     new SearchController(searchInput);
     

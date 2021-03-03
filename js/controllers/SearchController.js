@@ -9,6 +9,7 @@ export default class SearchController extends BaseController {
 
     lookingFor() {
         this.element.addEventListener('keyup', debounce(ev => {
+            
             const query = this.element.value;
             this.publish(this.events.SEARCH, query)
         }, 500));
