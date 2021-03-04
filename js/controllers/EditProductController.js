@@ -6,14 +6,18 @@ import DataService from "../services/DataService.js";
 import LoaderController from './LoaderController.js';
 import DeleteButtonController from './DeleteButtonControler.js';
 
+
 const NEXT_URL = 'edit-product.html?id=';
-export default class ProductListController extends BaseController {
+export default class EditProductController extends BaseController {
 
     constructor(element, productId) {
         super(element);        
         this.productId = productId;
         this.subscribe(this.events.PRODUCT_DELETED, ev => {
             window.location.href = "/login.html";
+        });
+        this.subscribe(this.events.SEARCH, query => {
+            window.location.href= "/?query="+query;
         });
     }
 

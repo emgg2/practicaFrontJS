@@ -16,8 +16,21 @@ export default class ProductListController extends BaseController {
             this.loadProducts();
         });
         this.subscribe(this.events.SEARCH, query => {
+            debugger;
             this.loadProducts(query);
         })
+
+        this.checkParams ();
+        
+    }
+
+    checkParams() {
+        debugger;
+        let params = new URLSearchParams(window.location.search);
+        if(params.has('query')) {
+            const query = params.get('query');
+            this.loadProducts(query);
+        }
     }
 
     renderNoProductsAvailable() {

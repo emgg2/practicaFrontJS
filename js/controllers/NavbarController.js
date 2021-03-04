@@ -10,10 +10,7 @@ export default class NavbarController extends BaseController {
         
     }
     render(){
-
-        debugger;
-        this.element.innerHTML = navbarView();
-        
+        this.element.innerHTML = navbarView();        
     }
 
    

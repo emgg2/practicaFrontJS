@@ -9,6 +9,9 @@ export default class NewProductController extends BaseController {
     constructor(element, tags) {
         super(element);
         this.tags = tags;
+        this.subscribe(this.events.SEARCH, query => {
+            window.location.href= "/?query="+query;
+        })
         this.checkIfUserIsLogged();
         this.attachEventListeners();
         this.focusInDescription();

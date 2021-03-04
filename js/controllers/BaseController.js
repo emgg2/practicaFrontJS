@@ -27,20 +27,16 @@ export default class BaseController {
     }
 
     checkMessage() {
-        let message = "";
-        const queryParams = window.location.search.replace('?', '');               
-        const queryParamsParts = queryParams.split("&");
-        queryParamsParts.forEach(element => {
-            const parameter = element.split('=');
-            if(parameter[0] === 'mensaje') {
-                message = parameter[1];                
-                if(messageText[message])
-                {
-                    message = messageText[message];
-                    this.publish(this.events.ADVISE, message);
-                }                      
-            }
-        });        
+        let message = "";        
+        const params = new URLSearchParams(window.location.search);
+        if(params.has('message'))
+        {
+            const messageKey = params.get('message');
+            message = messageText[message];
+            this.publish(this.events.ADVISE, message);
+        }
+        
+        
     }
 
     getMessageError(error,nextText) { 
