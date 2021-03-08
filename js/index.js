@@ -20,6 +20,7 @@ window.addEventListener('DOMContentLoaded', async (event) =>{
 
     const errorsElement = document.querySelector('.global-info');
     new ErrorController(errorsElement);
+    
 
     const adviseElement = document.querySelector('.global-info');
     new AdviseController(adviseElement);
