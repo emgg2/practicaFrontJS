@@ -16,4 +16,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const formElement = document.querySelector('form');
     new LoginFormController(formElement);
+
+    const buttonPruebame = document.getElementById('pruebame');
+    buttonPruebame.addEventListener('click', () => {
+        const popup = document.getElementById('mipopup');
+        popup.open = true;
+        
+    })
 });
