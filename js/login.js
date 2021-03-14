@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.lds-ring');
     const loaderController = new LoaderController(loader);
 
-    const errorsElement = document.querySelector('.global-info');
+    const errorsElement = document.querySelector('.popup');
     new ErrorController(errorsElement);
 
     const adviseElement = document.querySelector('.global-info');
@@ -17,10 +17,5 @@ window.addEventListener('DOMContentLoaded', () => {
     const formElement = document.querySelector('form');
     new LoginFormController(formElement);
 
-    const buttonPruebame = document.getElementById('pruebame');
-    buttonPruebame.addEventListener('click', () => {
-        const popup = document.getElementById('mipopup');
-        popup.open = true;
-        
-    })
+  
 });

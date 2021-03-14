@@ -11,13 +11,11 @@ export default class ErrorController extends BaseController {
         })
     }
 
-    showError(errorMessage) {
-        this.element.innerHTML = errorView(errorMessage);
-        this.element.classList.remove('hidden');
-        this.element.addEventListener(this.events.CLICK, (event) => {
-            if (event.target == this.element || event.target.classList.contains('delete')) {
-                this.element.classList.add('hidden');
-            }
-        })
+    showError(errorMessage) {    
+
+        this.element.innerHTML = errorView(errorMessage);       
+        const mipopup = document.getElementById('error-popup');                
+        mipopup.setAttribute('open', true);  
+       
     }
 }

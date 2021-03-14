@@ -1,11 +1,9 @@
 export const errorView = (errorMessage) => {
-    return `<article class="message is-danger">
-      <div class="message-header">
-        <p>Error</p>
-        <button class="delete" aria-label="delete"></button>
-      </div>
-      <div class="message-body">
-        ${errorMessage}
-      </div>
-    </article>`
+    return `<kc-popup id="error-popup" class="content">
+    <h2 slot="title">Error</h2>
+    <p>
+      ${errorMessage}
+    </p>    
+  </kc-popup>`    
+    
   }
